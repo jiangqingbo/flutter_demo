@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
 
               // 2.加载Assets资源
               Image.asset(
-                'assets/images/tzd.jpg',
-                width: 200,
+                'assets/images/hdzw.jpg',
+                width: 400,
                 height: 200,
               ),
 
@@ -65,7 +65,7 @@ class _MemoryImageWidgetState extends State<MemoryImageWidget> {
   @override
   void initState() {
     super.initState();
-    rootBundle.load('assets/images/tzd.jpg').then((data) {
+    rootBundle.load('assets/images/xin.jpg').then((data) {
       if (mounted) {
         setState(() {
           bytes = data.buffer.asUint8List();
@@ -83,8 +83,8 @@ class _MemoryImageWidgetState extends State<MemoryImageWidget> {
       color: Colors.transparent,
     );
     return Container(
-      width: 100,
-      height: 100,
+      width: 300,
+      height: 150,
       decoration: _decoration,
     );
   }
