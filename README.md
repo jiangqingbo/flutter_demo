@@ -11,4 +11,4 @@ A new Flutter application.
 3. 登录UI绘制 （1-login）
 
 
-<img src='screenshot/images_4_method.png' height=480><img src='screenshot/1_login.png' height=480>
+<img src='screenshot/images_4_method.png' height=480>    <img src='screenshot/1_login.png' height=480>
