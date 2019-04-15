@@ -6,15 +6,16 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main()=>runApp(MaterialApp(home: HomePage(),));
+void main()=>runApp(MaterialApp(home: DismissiblePage(),));
 
-class HomePage extends StatelessWidget {
+class DismissiblePage extends StatelessWidget {
 
   final List<String> items = List.generate(20, (index) => 'item $index');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Dismissible示例'),),
       body: ListView.builder(itemBuilder: (context, index){
         final item = items[index];
         return Dismissible(

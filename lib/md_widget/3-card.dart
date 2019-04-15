@@ -6,15 +6,12 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main() => runApp(MyApp());
+void main() => runApp(CardPage());
 
-class MyApp extends StatelessWidget {
+class CardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MaterialApp',
-      home: HomePage(),
-    );
+    return HomePage();
   }
 }
 

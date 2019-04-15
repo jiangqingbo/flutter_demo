@@ -10,43 +10,40 @@ import 'package:image_picker/image_picker.dart';
 /// create time: 2019/3/27 2:10 PM
 /// email: jqbo84@163.com
 ///
-void main() => runApp(MyApp());
+void main() => runApp(ImagePage());
 
-class MyApp extends StatelessWidget {
+class ImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     /// 添加调试布局线条
 //    debugPaintSizeEnabled = true;
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Image示例demo'),
-        ),
-        body: Center(
-          child: Column(
-            children: <Widget>[
-              // 1.加载网络图片
-              Image.network(
-                'https://www.baidu.com/img/bd_logo1.png?where=super',
-                width: 100,
-                height: 100,
-              ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Image示例demo'),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            // 1.加载网络图片
+            Image.network(
+              'https://www.baidu.com/img/bd_logo1.png?where=super',
+              width: 100,
+              height: 100,
+            ),
 
-              // 2.加载Assets资源
-              Image.asset(
-                'assets/images/hdzw.jpg',
-                width: 400,
-                height: 200,
-              ),
+            // 2.加载Assets资源
+            Image.asset(
+              'assets/images/hdzw.jpg',
+              width: 400,
+              height: 200,
+            ),
 
-              // 3.加载内存Memory资源
-              MemoryImageWidget(),
+            // 3.加载内存Memory资源
+            MemoryImageWidget(),
 
-              // 4.从文件加载图片
-              FileImageWidget(),
-
-            ],
-          ),
+            // 4.从文件加载图片
+            FileImageWidget(),
+          ],
         ),
       ),
     );

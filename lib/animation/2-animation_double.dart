@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 ///
 
 void main() => runApp(MaterialApp(
-      home: HomePage(),
+      home: AnimationDoublePage(),
     ));
 
-class HomePage extends StatefulWidget {
+class AnimationDoublePage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _AnimationDoublePageState createState() => _AnimationDoublePageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _AnimationDoublePageState extends State<AnimationDoublePage>
     with SingleTickerProviderStateMixin {
   Animation<double> _doubleAnim;
   AnimationController _animationController;
@@ -49,6 +49,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('AnimationDouble示例'),),
       body: Center(
         child: Container(
           width: _doubleAnim.value,

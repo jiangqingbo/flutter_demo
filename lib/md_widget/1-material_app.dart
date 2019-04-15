@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-main() => runApp(MyApp());
+main() => runApp(MaterialAppPage());
 
-class MyApp extends StatelessWidget {
+class MaterialAppPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

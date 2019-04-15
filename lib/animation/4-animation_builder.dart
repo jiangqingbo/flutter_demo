@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 ///
 
 void main() => runApp(MaterialApp(
-      home: HomePage(),
+      home: AnimationBuilderPage(),
     ));
 
-class HomePage extends StatefulWidget {
+class AnimationBuilderPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _AnimationBuilderPageState createState() => _AnimationBuilderPageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _AnimationBuilderPageState extends State<AnimationBuilderPage>
     with SingleTickerProviderStateMixin {
   Animation<double> _doubleAnim;
   AnimationController _animationController;
@@ -51,6 +51,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     var _screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(title: Text('AnimationBuilder示例'),),
       body: AnimatedBuilder(
           animation: _animationController,
           builder: (BuildContext context, Widget child) {

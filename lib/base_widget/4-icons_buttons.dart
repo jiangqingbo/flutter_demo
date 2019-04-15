@@ -6,34 +6,33 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main() => runApp(MyApp());
+void main() => runApp(IconsButtonsPage());
 
-class MyApp extends StatelessWidget {
+class IconsButtonsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Icons Button示例'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(Icons.person),
-              SizedBox(height: 20.0,),
-              IconButton(icon: Icon(Icons.error), onPressed: (){}),
-              Container(
-                height: 20.0,
-                color: Colors.blue,
-              ),
-              RaisedButton(
-                onPressed: (){},
-                child: Text('RaiseButton'),
-              ),
-            ],
-
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Icons Button示例'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Icon(Icons.person),
+            SizedBox(
+              height: 20.0,
+            ),
+            IconButton(icon: Icon(Icons.error), onPressed: () {}),
+            Container(
+              height: 20.0,
+              color: Colors.blue,
+            ),
+            RaisedButton(
+              onPressed: () {},
+              child: Text('RaiseButton'),
+            ),
+          ],
         ),
       ),
     );

@@ -6,21 +6,22 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main() => runApp(MyApp());
+void main() => runApp(AlignPage());
 
-class MyApp extends StatelessWidget {
+class AlignPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              width: 200.0,
-              height: 200.0,
-              color: Color(0xffff0000),
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Align示例'),
+      ),
+      body: Center(
+        child: Align(
+          alignment: Alignment.topRight,
+          child: Container(
+            width: 200.0,
+            height: 200.0,
+            color: Color(0xffff0000),
           ),
         ),
       ),

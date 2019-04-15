@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 ///
 
 void main() => runApp(MaterialApp(
-      home: HomePage(),
+      home: PaintHeartPage(),
     ));
 
-class HomePage extends StatefulWidget {
+class PaintHeartPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _PaintHeartPageState createState() => _PaintHeartPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _PaintHeartPageState extends State<PaintHeartPage> {
   List<Offset> _points = <Offset>[];
 
   @override
@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
     final double _height = logicalSize.height;
 
     return Scaffold(
+      appBar: AppBar(title: Text('点击画出心形图示例'),),
       body: Container(
         width: _width,
         height: _height,

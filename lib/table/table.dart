@@ -7,13 +7,14 @@ import 'package:flutter/material.dart';
 ///
 
 main() => runApp(MaterialApp(
-  home: MyApp(),
+  home: TablePage(),
 ));
 
-class MyApp extends StatelessWidget {
+class TablePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Table示例'),),
       body: Center(
         child: Table(
           columnWidths: const <int, TableColumnWidth>{

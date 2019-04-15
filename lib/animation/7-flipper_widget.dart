@@ -8,15 +8,15 @@ import 'dart:math';
 ///
 
 void main() => runApp(MaterialApp(
-  home: HomePage(),
+  home: FlipperWidgetPage(),
 ));
 
-class HomePage extends StatefulWidget {
+class FlipperWidgetPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _FlipperWidgetPageState createState() => _FlipperWidgetPageState();
 }
 
-class _HomePageState extends State<HomePage>
+class _FlipperWidgetPageState extends State<FlipperWidgetPage>
     with SingleTickerProviderStateMixin {
   Animation<double> _animation;
   AnimationController _animationController;
@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('FlipperWidget示例'),),
       body: Center(
         child: AnimatedBuilder(
             animation: _animation,

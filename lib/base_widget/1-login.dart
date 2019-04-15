@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(MaterialApp(
       title: 'Simple Login',
-      home: MyApp(),
+      home: LoginPage(),
     ));
 
-class MyApp extends StatelessWidget {
+class LoginPage extends StatelessWidget {
   GlobalKey<FormState> _loginKey = GlobalKey();
 
   String _username;

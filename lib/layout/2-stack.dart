@@ -9,25 +9,29 @@ import 'package:flutter/material.dart';
 ///
 
 void main() => runApp(MaterialApp(
-  home: HomePage(),
-));
+      home: StackPage(),
+    ));
 
-class HomePage extends StatefulWidget {
+class StackPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _StackPageState createState() => _StackPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _StackPageState extends State<StackPage> {
   int _index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Stack示例'),
+      ),
       body: Center(
         //        child: buildPositionedStack(),
 //        child: buildAlignmentStack(),
         child: buildIndexedStack(),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
+      floatingActionButton: FloatingActionButton(onPressed: () {
         setState(() {
           _index = Random().nextInt(2) % 2;
         });

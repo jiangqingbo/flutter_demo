@@ -7,21 +7,22 @@ import 'package:flutter/material.dart';
 ///
 
 void main() => runApp(MaterialApp(
-      home: HomePage(),
+      home: Animation3DPage(),
     ));
 
-class HomePage extends StatefulWidget {
+class Animation3DPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _Animation3DPageState createState() => _Animation3DPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _Animation3DPageState extends State<Animation3DPage> {
 
   Offset _offset = Offset.zero;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Animation 3D 示例'),),
       body: Center(
         child: Transform(
           transform: Matrix4.identity()

@@ -7,15 +7,12 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main() => runApp(MyApp());
+void main() => runApp(CupertinoLoadingPage());
 
-class MyApp extends StatelessWidget {
+class CupertinoLoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MaterialApp',
-      home: HomePage(),
-    );
+    return HomePage();
   }
 }
 
@@ -28,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('CupertinoLoading示例'),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

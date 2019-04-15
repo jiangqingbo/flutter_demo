@@ -9,15 +9,15 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-main() => runApp(MyApp());
+main() => runApp(CupertinoDemoPage());
 
-class MyApp extends StatelessWidget {
+class CupertinoDemoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MaterialApp',
-      home: HomePage(),
+    return Scaffold(
+      appBar: AppBar(title: Text('CupertinoTabScaffold示例'),),
+      body: HomePage(),
     );
   }
 }
@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
     print('width: ${physicalSize.width}, height: ${physicalSize.height}, devicePixelRatio: ${window.devicePixelRatio}');
 
     return CupertinoTabScaffold(
+
       tabBar: CupertinoTabBar(items: [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -72,7 +73,7 @@ class MyHome extends StatelessWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text('主页'),
-        leading: Icon(CupertinoIcons.back),
+        leading: Icon(CupertinoIcons.back, ),
         trailing: Icon(CupertinoIcons.search),
       ),
       child: Center(

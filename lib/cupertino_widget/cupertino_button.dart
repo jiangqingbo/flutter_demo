@@ -7,15 +7,12 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main() => runApp(MyApp());
+void main() => runApp(CupertinoButtonPage());
 
-class MyApp extends StatelessWidget {
+class CupertinoButtonPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MaterialApp',
-      home: HomePage(),
-    );
+    return HomePage();
   }
 }
 
@@ -28,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('CupertinoButton示例'),),
       body: Center(
         child: CupertinoButton(
           child: Text('CupertinoButton'),

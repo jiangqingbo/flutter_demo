@@ -6,15 +6,12 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-main() => runApp(MyApp());
+main() => runApp(DialogPage());
 
-class MyApp extends StatelessWidget {
+class DialogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MaterialApp',
-      home: HomePage(),
-    );
+    return HomePage();
   }
 }
 
@@ -27,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Dialog示例'),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

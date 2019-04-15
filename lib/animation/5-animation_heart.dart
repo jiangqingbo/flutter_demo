@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 /// email: jqbo84@163.com
 ///
 
-void main() => runApp(MaterialApp(home: HomePage(),));
+void main() => runApp(MaterialApp(home: AnimationHeartPage(),));
 
-class HomePage extends StatefulWidget {
+class AnimationHeartPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _AnimationHeartPageState createState() => _AnimationHeartPageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _AnimationHeartPageState extends State<AnimationHeartPage> with SingleTickerProviderStateMixin {
   List<Offset> points = List();
 
   Animation<double> _doubleAnim;
@@ -47,6 +47,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
     Offset offset = Offset(0, 0);
     points.add(offset);
     return Scaffold(
+      appBar: AppBar(title: Text('心跳动画示例'),),
       body: Center(
         child: Container(
           width: _doubleAnim.value,

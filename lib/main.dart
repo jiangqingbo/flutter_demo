@@ -1,111 +1,177 @@
 import 'package:flutter/material.dart';
+import 'package:flutterdemo/home/base_widget_list_page.dart';
+import 'package:flutterdemo/home/contacts_page.dart';
+import 'package:flutterdemo/home/discovery_page.dart';
+import 'package:flutterdemo/home/other_page.dart';
+import 'package:flutterdemo/home/profile_page.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {'/other': (BuildContext context) => OtherPage()},
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _currentIndex = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  final _widgetOption = [
+    Text('Widget'),
+    Text('通讯录'),
+    Text('发现'),
+    Text('我'),
+  ];
+
+  List<Widget> _pages;
+  PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _pages = [
+      BasicWidgetPage(),
+      ContactsPage(),
+      DiscoveryPage(),
+      ProfilePage(),
+    ];
+
+    _pageController = PageController(initialPage: _currentIndex);
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('Flutter Widget示例'),
+        leading: Icon(Icons.star),
+        elevation: 10.0,
+        actions: <Widget>[
+          Icon(Icons.search),
+          SizedBox(
+            width: 10.0,
+          ),
+          Icon(
+            Icons.more_vert,
+            size: 30.0,
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
+      body: PageView.builder(
+//        physics: NeverScrollableScrollPhysics(),//禁止滑动
+        itemBuilder: (BuildContext context, int index) {
+          return _pages[index];
+        },
+        controller: _pageController,
+        itemCount: _pages.length,
+        onPageChanged: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        onPressed: () {
+          Navigator.pushNamed(context, '/other');
+        },
+        tooltip: '路由跳转',
+        foregroundColor: Color(0xffffffff),
+        backgroundColor: Color(0xff000000),
+        //阴影
+        elevation: 0.0,
+        child: Icon(Icons.arrow_forward),
+        //        shape: RoundedRectangleBorder(), //默认是原型，可以通过shape 改变形状，例如：RoundedRectangleBorder() 是方形
+      ),
+//      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat, //默认在右下角
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            title: Text('Widget'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.contacts),
+            title: Text('通讯录'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.near_me),
+            title: Text('发现'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            title: Text('我'),
+          ),
+        ],
+        currentIndex: _currentIndex,
+        type: BottomNavigationBarType.fixed,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+          _pageController.animateToPage(index, duration: Duration(microseconds: 1), curve: Curves.ease);
+        },
+      ),
+      drawer: _buildDrawer(),
     );
   }
+}
+
+//侧滑效果
+Drawer _buildDrawer() {
+  return Drawer(
+    elevation: 10.0,
+    child: ListView(
+      padding: const EdgeInsets.all(0.0),
+      children: <Widget>[
+        UserAccountsDrawerHeader(
+          currentAccountPicture: CircleAvatar(
+            backgroundImage: AssetImage('assets/images/ic_launcher.png'),
+          ),
+          accountName: Text('jiangqingbo'),
+          accountEmail: Text('jiangqingbo@qq.com'),
+          otherAccountsPictures: <Widget>[
+            Icon(Icons.camera_alt),
+          ],
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/f1.png'),
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        ListTile(
+          leading: Icon(Icons.payment, color: Color(0xff0000ff),),
+          title: Text('会员特权'),
+        ),
+        ListTile(
+          leading: Icon(Icons.person_pin, color: Color(0xff4444ff),),
+          title: Text('个人信息'),
+        ),
+        ListTile(
+          leading: Icon(Icons.system_update_alt, color: Color(0xff6666ff),),
+          title: Text('版本升级'),
+        ),
+        AboutListTile(
+          icon: Icon(Icons.error, color: Color(0xff9999ff),),
+          child: Text('关于'),
+          applicationName: 'Flutter开发',
+          applicationVersion: '1.0',
+        ),
+      ],
+    ),
+  );
 }
